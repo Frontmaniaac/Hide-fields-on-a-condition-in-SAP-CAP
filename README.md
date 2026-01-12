@@ -1,25 +1,30 @@
-# Getting Started
+# @UI.Hidden with $edmJson
 
-Welcome to your new project.
+This tutorial focuses on a single, important annotation:
 
-It contains these folders and files, following our recommended project layout:
+```
+@UI.Hidden: { $edmJson: { $Path: 'isDelayed' } }
+```
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
+---
 
+## What it does
 
-## Next Steps
+This annotation controls **field visibility in Fiori Elements based on data**.
 
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
+- When `isDelayed = true` → the field is **hidden**
+- When `isDelayed = false` → the field is **visible**
 
+The UI reacts directly to the value coming from the service.
 
-## Learn More
+---
 
-Learn more at https://cap.cloud.sap/docs/get-started/.
+## How it works
+
+`$Path: 'isDelayed'` means:
+
+> Use the value of the `isDelayed` property from the current entity instance.
+
+Fiori Elements evaluates this at runtime for each row/object and hides or shows the field automatically.
+
+---
